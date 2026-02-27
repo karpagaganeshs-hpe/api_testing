@@ -36,10 +36,40 @@ Testing Endpoints
 Since Postman isn't installed, use the REST Client extension in VS Code with a .http file or use
 curl in a new terminal window.
 Examples:
+
 Get All (Paginated): GET http://127.0.0.1:5000/todos?limit=5&page=1
 Search Name: GET http://127.0.0.1:5000/todos?search=Sneha
-Get by ID: GET http://127.0.0.1:5000/todos/16
-Delete User: DELETE http://127.0.0.1:5000/todos/1
+Get by ID: GET http://127.0.0.1:5000/todos/14
+Post: POST http://127.0.0.1:5000/users
+      {
+        "first_name": "Hardik",
+        "last_name": "Himanshu Pandya",
+        "company_name": "MI",
+        "age": 33,
+        "city": "Mumbai",
+        "state": "Maharastra",
+        "zip": "625005",
+        "email": "hardik@mi.com",
+        "web": "https://mi_blog.com"
+      }
+Put: PUT http://127.0.0.1:5000/users/16
+     {
+        "first_name": "Sneha",
+        "last_name": "Suresh",
+        "company_name": "TCE",
+        "age": 22,
+        "city": "Kkdi",
+        "state": "TN",
+        "zip": "625015",
+        "email": "sneha@example.com",
+        "web": "https://sneha.com"
+     }
+Patch: PATCH http://127.0.0.1:5000/users/16
+       {
+        "company_name": "JuniperNetworks"
+       }
+Delete User: DELETE http://127.0.0.1:5000/users/2
+Get statistics: GET http://127.0.0.1:5000/api/users/summary
 
 Notes on Database Logic
 

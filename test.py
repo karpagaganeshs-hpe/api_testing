@@ -11,7 +11,7 @@ def get_db_connection():
     return conn
 
 #now creating a endpoint with  route
-##def get_users():
+#def get_users():
     conn = get_db_connection()
     users_indices = conn.execute('SELECT * FROM users').fetchall()
     conn.close()
@@ -82,10 +82,10 @@ def post_user():
                        )
                        )
     
-    new_id = cursor.lastrowid
+    new_id = cursor.lastrowid #tells what new id is assigned to the user
 
-    conn.commit()
-    conn.close()
+    conn.commit() #to store permanently in the disk
+    conn.close() #to free up sys resources
 
     request_data['id'] = new_id
     return jsonify(request_data), 201
@@ -176,7 +176,7 @@ def patch_user(id):
 
     return jsonify(dict(updated_user))
 
-@app.route("/users", methods = ["GET"])
+@app.route("/api/users/summary", methods = ["GET"])
 def get_users_summary():
     conn = get_db_connection()
 
@@ -191,6 +191,6 @@ def get_users_summary():
         "average_age": avg_age
     })
 
-if __name__ == "__main":
+if __name__ == "__main__":
     app.run(debug=True, port=5000) #debug is true for production servers
 
